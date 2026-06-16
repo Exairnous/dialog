@@ -79,7 +79,7 @@ jobs:
 
       # Code
       - name: Checkout repository
-        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           path: "./repo"
           persist-credentials: false
@@ -100,7 +100,7 @@ jobs:
           install: true
 
       - name: Login to container registry
-        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ${{ env.Registry_Base_URL }}
           username: ${{ env.Registry_Username }}
