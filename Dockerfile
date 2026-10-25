@@ -1,13 +1,13 @@
 # syntax=docker/dockerfile:1
-arg NODE_VERSION=18
+arg NODE_VERSION=24
 
 from node:${NODE_VERSION} as build
 workdir /app
 run apt-get update > /dev/null && apt-get -y install python3-pip > /dev/null
 run mkdir certs && openssl req -x509 -newkey rsa:2048 -sha256 -days 36500 -nodes -keyout certs/privkey.pem -out certs/fullchain.pem -subj '/CN=dialog'
 copy package.json .
-copy package-lock.json .
-run npm ci
+#copy package-lock.json .
+run npm install
 copy . .
 from node:${NODE_VERSION}-slim
 workdir /app
